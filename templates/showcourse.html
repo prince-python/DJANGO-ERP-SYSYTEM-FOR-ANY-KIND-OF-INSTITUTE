@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{%block content%}
+<center><div class="col-8">
+
+<table class="table table-bordered rounded text-white  border-dark text-center table-hover bg-primary justify-content-center  bg-opacity-10"  >
+    <h1 class="text-white">All Course Details</h1>
+<thead>
+    <tr>
+        <th>Course Name</th>
+        <th>Duration</th>
+        <th>Course Details</th>
+        <th>Fees</th>
+        <th>Delete</th>
+        <th>Update</th>
+    </tr>
+</thead>
+<tbody>
+    {% for i in cr %}
+    <tr>
+        <td>{{i.cname}}</td>
+        <td>{{i.duration}}</td>
+        <td>{{i.details}}</td>
+        <td>{{i.fees}}</td>
+        <td><a class="btn btn-sm text-white btn-outline-warning" href="{% url 'cdelete' id=i.id %}">Delete</a></td>
+        <td><a class="btn  btn-sm text-white btn-outline-warning" href="{% url 'cupdate' id=i.id %}">Update</a></td>
+    </tr>
+    {% endfor %}
+</tbody>
+</table></div></center>
+{%endblock%}

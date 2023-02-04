@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{%block content%}
+<div class="container-fluid border border-dark bg-opacity-25 bg-primary border-primary text-white rounded mt-4  col-6">
+<h1>Enter Course Details</h1>
+{% for i in cr %}
+<form action="{% url 'cupdates' id=i.id %}" method="post">
+    {% csrf_token %}
+    
+    <input type="hidden" name="id" value="{{ i.id }}" class="form-control" />
+    Course Name<input type="text" name="name" placeholder="{{ i.cname }}" class="form-control" /><br>
+    Course Duration<input type="text" name="duration" class="form-control" /><br>
+    Course Details<textarea name="details" rows="5" cols="21" class="form-control"></textarea><br>
+    Course fees<input type="number" name="fees" class="form-control" /><br>
+    {% endfor %}
+    <button class="btn btn-primary col-12">Update course</button>
+</form></div>
+
+{%endblock%}
